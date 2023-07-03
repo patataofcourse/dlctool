@@ -11,3 +11,6 @@ ignore_3dstool.txt
 
 /romfs/
 /rom/
+
+__pycache__
+**.pyc
