@@ -32,22 +32,39 @@ jobs:
       - name: Build executable
         run: pyinstaller -F -n dlctool main.py
 
-      - name: Package application (MacOS)
+      - name: Get 3dstool (Windows)
+        if: runner.os == 'Windows'
+        uses: wei/curl@v1
+        with:
+          args: -o 3dstool.zip https://github.com/dnasdw/3dstool/releases/download/v1.2.6/3dstool.zip
+      
+      - name: Package application (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          cd dist
+          unzip ../3dstool.zip
+        shell: bash
+
+      - name: Get 3dstool (macOS)
+        if: runner.os == 'macOS'
+        uses: wei/curl@v1
+        with:
+          args: -o 3dstool.tar.gz https://github.com/dnasdw/3dstool/releases/download/v1.2.6/3dstool_macos_x86_64.tar.gz
+
+      - name: Package application (macOS)
         if: runner.os == 'macOS'
         run: |
           curl https://github.com/dnasdw/3dstool/releases/download/v1.2.6/3dstool_macos_x86_64.tar.gz -o 3dstool.tar.gz
           gzip -d 3dstool.tar.gz
           cd dist
           tar -xf ../3dstool.tar
-
-      - name: Package application (Windows)
-        if: runner.os == 'Windows'
-        run: |
-          curl https://github.com/dnasdw/3dstool/releases/download/v1.2.6/3dstool.zip -o 3dstool.zip
-          cd dist
-          unzip ../3dstool.zip
-        shell: bash
      
+      - name: Get 3dstool (Linux)
+        if: runner.os == 'Linux'
+        uses: wei/curl@v1
+        with:
+          args: -o 3dstool.tar.gz https://github.com/dnasdw/3dstool/releases/download/v1.2.6/3dstool_linux_x86_64.tar.gz
+
       - name: Package application (Linux)
         if: runner.os == 'Linux'
         run: |
