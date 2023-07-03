@@ -38,7 +38,6 @@ jobs:
         with:
           url: https://github.com/dnasdw/3dstool/releases/download/v1.2.6/3dstool.zip
           target: ./
-          auto-match: true
 
       - name: Extract 3dstool (Windows)
         if: runner.os == 'Windows'
