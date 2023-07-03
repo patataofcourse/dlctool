@@ -35,7 +35,7 @@ jobs:
       - name: Package application (MacOS)
         if: runner.os == 'macOS'
         run: |
-          curl https://github.com/dnasdw/3dstool/releases/download/v1.2.6/3dstool_macos_x86_64.tar.gz > 3dstool.tar.gz
+          curl https://github.com/dnasdw/3dstool/releases/download/v1.2.6/3dstool_macos_x86_64.tar.gz -o 3dstool.tar.gz
           gzip -d 3dstool.tar.gz
           cd dist
           tar -xf ../3dstool.tar
@@ -43,7 +43,7 @@ jobs:
       - name: Package application (Windows)
         if: runner.os == 'Windows'
         run: |
-          curl https://github.com/dnasdw/3dstool/releases/download/v1.2.6/3dstool.zip > 3dstool.zip
+          curl https://github.com/dnasdw/3dstool/releases/download/v1.2.6/3dstool.zip -o 3dstool.zip
           cd dist
           unzip ../3dstool.zip
         shell: bash
@@ -51,7 +51,7 @@ jobs:
       - name: Package application (Linux)
         if: runner.os == 'Linux'
         run: |
-          curl https://github.com/dnasdw/3dstool/releases/download/v1.2.6/3dstool_linux_x86_64.tar.gz > 3dstool.tar.gz
+          curl https://github.com/dnasdw/3dstool/releases/download/v1.2.6/3dstool_linux_x86_64.tar.gz -o 3dstool.tar.gz
           gzip -d 3dstool.tar.gz
           cd dist
           tar -xf ../3dstool.tar
