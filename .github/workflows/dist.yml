@@ -68,7 +68,6 @@ jobs:
       - name: Package application (Linux)
         if: runner.os == 'Linux'
         run: |
-          curl https://github.com/dnasdw/3dstool/releases/download/v1.2.6/3dstool_linux_x86_64.tar.gz -o 3dstool.tar.gz
           gzip -d 3dstool.tar.gz
           cd dist
           tar -xf ../3dstool.tar
