@@ -4,7 +4,7 @@ from tkinter import ttk
 from window import create, extract
 
 root = Tk()
-root.title("CFA Tool")
+root.title("3DS DLC/CFA Tool")
 
 tabs = ttk.Notebook(root)
 tab_x = ttk.Frame(tabs, padding=10)
