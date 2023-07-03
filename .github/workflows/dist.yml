@@ -32,14 +32,6 @@ jobs:
       - name: Build executable
         run: pyinstaller -F -n dlctool main.py
 
-      - name: Package application (MacOS)
-        if: runner.os == 'macOS'
-        run: |
-          wget https://github.com/dnasdw/3dstool/releases/download/v1.2.6/3dstool_macos_x86_64.tar.gz -O 3dstool.tar.gz
-          gzip -d 3dstool.tar.gz
-          cd dist
-          tar -xf ../3dstool.tar
-
       - name: Package application (Windows)
         if: runner.os == 'Windows'
         run: |
@@ -47,6 +39,14 @@ jobs:
           cd dist
           unzip ../3dstool.zip
         shell: bash
+
+      - name: Package application (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          wget https://github.com/dnasdw/3dstool/releases/download/v1.2.6/3dstool_macos_x86_64.tar.gz -O 3dstool.tar.gz
+          gzip -d 3dstool.tar.gz
+          cd dist
+          tar -xf ../3dstool.tar
      
       - name: Package application (Linux)
         if: runner.os == 'Linux'
