@@ -1,0 +1,13 @@
+3dstool
+3dstool.exe
+ext_key.txt
+ignore_3dstool.txt
+
+*.zip
+*.tar.gz
+
+*.app
+*.bin
+
+/romfs/
+/rom/
