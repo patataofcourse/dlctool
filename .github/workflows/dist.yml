@@ -32,15 +32,22 @@ jobs:
       - name: Build executable
         run: pyinstaller -F -n dlctool main.py
 
-      - name: Package application (Windows)
+      - name: Get 3dstool (Windows)
+        if: runner.os == 'Windows' 
+        uses: suisei-cn/actions-download-file@v1.4.0
+        with:
+          url: https://github.com/dnasdw/3dstool/releases/download/v1.2.6/3dstool.zip
+          target: ./
+          auto-match: true
+
+      - name: Extract 3dstool (Windows)
         if: runner.os == 'Windows'
         run: |
-          wget https://github.com/dnasdw/3dstool/releases/download/v1.2.6/3dstool.zip -O 3dstool.zip
           cd dist
           unzip ../3dstool.zip
         shell: bash
 
-      - name: Package application (macOS)
+      - name: Get and extract 3dstool (macOS)
         if: runner.os == 'macOS'
         run: |
           wget https://github.com/dnasdw/3dstool/releases/download/v1.2.6/3dstool_macos_x86_64.tar.gz -O 3dstool.tar.gz
@@ -48,7 +55,7 @@ jobs:
           cd dist
           tar -xf ../3dstool.tar
      
-      - name: Package application (Linux)
+      - name: Get and extract 3dstool (Linux)
         if: runner.os == 'Linux'
         run: |
           wget https://github.com/dnasdw/3dstool/releases/download/v1.2.6/3dstool_linux_x86_64.tar.gz -O 3dstool.tar.gz
@@ -56,7 +63,8 @@ jobs:
           cd dist
           tar -xf ../3dstool.tar
 
-      - uses: actions/upload-artifact@v2
+      - name: Upload
+        uses: actions/upload-artifact@v2
         with:
           name: dlctool-${{ runner.os }}
           path: dist
