@@ -23,12 +23,12 @@ def apply(tab_c):
     ttk.Label(tab_c, text="RomFS folder").grid(column=0, row=2)
     romfs_entry = ttk.Entry(tab_c)
     romfs_entry.grid(column=1,row=2)
-    ttk.Button(tab_c, text="Browse", command=get_dname(romfs_entry)).grid(column=2, row=2)
+    ttk.Button(tab_c, text="Browse", command=get_dname(romfs_entry, initialfile="romfs")).grid(column=2, row=2)
 
     ttk.Label(tab_c, text="Output file (.app)").grid(column=0, row=3)
     out_entry = ttk.Entry(tab_c)
     out_entry.grid(column=1,row=3)
-    ttk.Button(tab_c, text="Browse", command=get_fname_out(out_entry, initialfile="romfs")).grid(column=2, row=3)
+    ttk.Button(tab_c, text="Browse", command=get_fname_out(out_entry)).grid(column=2, row=3)
 
     #ttk.Label(tab_c, text="Output type").grid(column=0, row=4)
     #out_type = ttk.Combobox(tab_c,values=["CIA (.cia)", "CFA/NCCH (.app)"])
