@@ -17,3 +17,6 @@ __pycache__
 
 build
 dist
+
+# Temporary files for testing
+test
