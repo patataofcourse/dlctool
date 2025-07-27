@@ -25,7 +25,7 @@ def apply(tab_c):
     ttk.Label(tab_c, text="RomFS folder").grid(column=0, row=new_row())
     romfs_entry = ttk.Entry(tab_c)
     romfs_entry.grid(column=1,row=row())
-    ttk.Button(tab_c, text="Browse", command=get_dname(romfs_entry, initialfile="romfs")).grid(column=2, row=row())
+    ttk.Button(tab_c, text="Browse", command=get_dname(romfs_entry, initialdir="romfs")).grid(column=2, row=row())
 
     ttk.Label(tab_c, text="Output file (.app)").grid(column=0, row=new_row())
     out_entry = ttk.Entry(tab_c)
